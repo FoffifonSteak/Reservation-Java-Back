@@ -1,5 +1,6 @@
 package com.gab1machine.fridge.reservation;
 
+import com.gab1machine.fridge.storage.StorageEntity;
 
 import com.gab1machine.fridge.user.UserEntity;
 import jakarta.persistence.*;
@@ -19,6 +20,6 @@ public class ReservationEntity {
     @Column(nullable = false)
     private Date date;
     @Column(nullable = false)
-    private int size;
+    private Integer size;
     private UUID storage;
 }
