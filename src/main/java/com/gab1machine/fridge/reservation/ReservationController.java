@@ -25,11 +25,8 @@ public class ReservationController {
     @Operation(summary = "Get all reservations")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Retreived successfully",
-                    content = {
-                            @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                    array = @ArraySchema(schema = @Schema(implementation = ReservationDto.class))
-                            )
-                    }),
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,array = @ArraySchema(schema = @Schema(implementation = ReservationDto.class)))
+            ),
     })
     @GetMapping
     public @ResponseBody ResponseEntity<List<ReservationDto>> getReservations() {
