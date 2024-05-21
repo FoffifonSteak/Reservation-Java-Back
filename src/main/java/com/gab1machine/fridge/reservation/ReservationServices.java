@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -60,5 +61,11 @@ public class ReservationServices {
             return Optional.of(this.entityToDto(this.createAndPercistReservationEntity(reservationDto)));
         }
         return Optional.of(this.entityToDto(this.createAndPercistReservationEntity(reservationDto)));
+    }
+
+    public List<ReservationDto> getAll() {
+        return this.reservationRepository.findAll().stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
     }
 }
