@@ -27,7 +27,7 @@ public class StorageController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ResponseEntity<StorageDto> getStorage(@PathVariable @RequestParam(name = "id", required = true) UUID id) {
+    public @ResponseBody ResponseEntity<StorageDto> getStorage(@PathVariable UUID id) {
         Optional<StorageDto> dto = this.storageServices.getStorage(id);
         return dto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }

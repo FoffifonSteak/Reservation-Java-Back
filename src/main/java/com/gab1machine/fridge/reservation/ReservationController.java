@@ -37,7 +37,7 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ResponseEntity<ReservationOutputDto> getReservation(@PathVariable @RequestParam(name = "id", required = false) UUID id) {
+    public @ResponseBody ResponseEntity<ReservationOutputDto> getReservation(@RequestParam(name = "id", required = false) UUID id) {
         if (id != null) {
             Optional<ReservationDto> dto = this.reservationServices.getReservation(id);
             return dto.map(reservationDto -> ResponseEntity.ok(this.reservationServices.dtoToODto(reservationDto))).orElseGet(() -> ResponseEntity.badRequest().build());
