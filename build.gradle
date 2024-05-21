@@ -27,11 +27,13 @@ dependencies {
 	implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
 	implementation 'javax.persistence:javax.persistence-api:2.2'
 	compileOnly 'org.projectlombok:lombok'
-	implementation 'mysql:mysql-connector-java:8.0.33'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mockito:mockito-core'
+	testImplementation 'org.mockito:mockito-junit-jupiter'
 }
 
 tasks.named('test') {
