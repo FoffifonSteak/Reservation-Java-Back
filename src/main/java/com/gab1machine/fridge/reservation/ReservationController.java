@@ -1,6 +1,5 @@
 package com.gab1machine.fridge.reservation;
 
-import com.gab1machine.fridge.storage.StorageDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,7 +28,11 @@ public class ReservationController {
             ),
     })
     @GetMapping
-    public @ResponseBody ResponseEntity<List<ReservationDto>> getReservations() {
+    public @ResponseBody ResponseEntity<List<ReservationDto>> getReservations(@RequestParam(name = "storageId", required = false) UUID storageId) {
+        if (storageId != null) {
+            List<ReservationDto> dto = this.reservationServices.getAllByStorage(storageId);
+            return ResponseEntity.ok(dto);
+        }
         return ResponseEntity.ok(this.reservationServices.getAll());
     }
 

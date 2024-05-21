@@ -3,6 +3,7 @@ package com.gab1machine.fridge.storage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,5 +41,9 @@ public class StorageServices {
 
     public boolean exist(UUID id) {
         return this.storageRepository.existsById(id);
+    }
+
+    public List<StorageDto> getAll() {
+        return this.storageRepository.findAll().stream().map(this::entityToDto).toList();
     }
 }

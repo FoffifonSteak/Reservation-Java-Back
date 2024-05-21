@@ -68,4 +68,10 @@ public class ReservationServices {
                 .map(this::entityToDto)
                 .collect(Collectors.toList());
     }
+
+    public List<ReservationDto> getAllByStorage(UUID storageId) {
+        return this.reservationRepository.findAllByStorage(storageId).stream()
+                .map(this::entityToDto)
+                .collect(Collectors.toList());
+    }
 }
