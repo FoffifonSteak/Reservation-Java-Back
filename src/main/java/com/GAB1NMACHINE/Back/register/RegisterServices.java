@@ -2,7 +2,7 @@ package com.GAB1NMACHINE.Back.register;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 import java.util.UUID;
@@ -12,17 +12,18 @@ import java.util.UUID;
 public class RegisterServices {
 
     private final RegisterRepository registerRepository;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
     public RegisterDto createRegister(RegisterDto registerDto) {
-        String encodedPassword = passwordEncoder.encode(registerDto.password());
+        //String encodedPassword = passwordEncoder.encode(registerDto.password());
         RegisterEntity registerEntity = new RegisterEntity(
                 UUID.randomUUID(),
                 registerDto.name(),
                 registerDto.surname(),
                 registerDto.email(),
-                encodedPassword
+                registerDto.password()
+                //encodedPassword
         );
 
         RegisterEntity savedEntity = registerRepository.save(registerEntity);
@@ -31,8 +32,8 @@ public class RegisterServices {
                 savedEntity.getName(),
                 savedEntity.getSurname(),
                 savedEntity.getEmail(),
-                null,
-                null
+                savedEntity.getPassword(),
+                savedEntity.getPassword()
         );
     }
 
